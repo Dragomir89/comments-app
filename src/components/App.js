@@ -15,7 +15,7 @@ class App extends Component {
   }
 
   chanegeHandler = (e) => {
-
+    
     this.setState({ [e.target.name]: e.target.value });
 
     e.target.value === "" || e.target.value.length > 100 ?
@@ -25,7 +25,7 @@ class App extends Component {
   handleClick = (e) => {
     e.preventDefault();
     const { comment } = this.state;
-    this.setState({ 'comment': '' });
+    this.setState({ 'comment': '', disabledBtn: true });
     this.props.addComment(comment);
   }
 
