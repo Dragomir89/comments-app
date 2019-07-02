@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { addComment } from '../actions';
 import Input from './common/Input';
 import CommentsList from './CommentsList';
+import { getComments } from '../actions';
 
 class App extends Component {
   constructor(props) {
@@ -12,6 +13,10 @@ class App extends Component {
       comment: '',
       disabledBtn: true
     }
+  }
+
+  componentDidMount() {
+    this.props.getComments();
   }
 
   chanegeHandler = (e) => {
@@ -55,4 +60,4 @@ function mapStateToProps (state) {
   }
 }
 
-export default connect(mapStateToProps, { addComment })(App);
+export default connect(mapStateToProps, { getComments, addComment })(App);

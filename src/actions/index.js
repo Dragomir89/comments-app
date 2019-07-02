@@ -1,13 +1,24 @@
-import { ADD_COMMENT, EDIT_COMMENT, DELETE_COMMENT } from './types';
+import api from '../apis/local'
 
-export const addComment = (comment) => (dispatch) => {
-    dispatch({ type: ADD_COMMENT, payload: { content: comment, date: new Date() } });
+import { GET_COMMENTS, ADD_COMMENT, EDIT_COMMENT } from './types';
+
+export const getComments = () => async (dispatch) => {
+    const res = await api.get('/get-comments');
+    dispatch({type: GET_COMMENTS, payload: res.data});
+}
+
+export const addComment = (content) => async (dispatch) => {
+    const comment = { content }
+    const res = await api.post('/add-comment', comment);
+    dispatch({ type: ADD_COMMENT, payload: res.data });
 };
 
-export const editComment = (commentDetails) => (dispatch) => {
-    dispatch({ type: EDIT_COMMENT, payload: commentDetails });
+export const editComment = (commentDetails) => async (dispatch) => {
+    const res = await api.post('/edit-comment', commentDetails);
+    dispatch({ type: EDIT_COMMENT, payload: res.data});
 };
 
-export const deleteComment = (id) => (dispatch) => {
-    dispatch({ type: DELETE_COMMENT, payload: id });
+export const deleteComment = (id) => async (dispatch) => {
+    const res = await api.post(`/delete/${id}`);
+    dispatch({ type: GET_COMMENTS, payload: res.data });
 }

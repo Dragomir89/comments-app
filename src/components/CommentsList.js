@@ -3,8 +3,8 @@ import Comment from './Comment';
 
 export default ({ comments }) => {
     function renderComments (comments) {
-        return comments.map((c, i) => {
-            return <Comment content={c.content} date={c.date} id={i} key={i} />
+        return comments.map((c) => {
+            return <Comment content={c.content} date={c.date} id={c._id} key={c._id} />
         })
     }
     return (

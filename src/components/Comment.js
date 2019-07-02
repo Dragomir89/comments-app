@@ -40,7 +40,6 @@ class Comment extends Component {
             padding: '5px',
             marginBottom: '5px'
         }
-        
         return (
             <div>
                 <div style={style}>
@@ -49,7 +48,7 @@ class Comment extends Component {
                     {this.state.showEditField ?
                         <EditComponent id={this.props.id} content={this.props.content} /> : null}
 
-                    <p>Added on: {this.props.date.toLocaleString()}</p>
+                    <p>Added on: {new Date(this.props.date).toLocaleString()}</p>
                     <div>
                         <button
                             onClick={this.handleEditClick}
