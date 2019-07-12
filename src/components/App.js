@@ -15,12 +15,12 @@ class App extends Component {
     }
   }
 
-  componentDidMount() {
+  componentDidMount () {
     this.props.getComments();
   }
 
   chanegeHandler = (e) => {
-    
+
     this.setState({ [e.target.name]: e.target.value });
 
     e.target.value === "" || e.target.value.length > 100 ?

@@ -13,10 +13,14 @@ class EditComment extends Component {
     }
 
     chanegeHandler = (e) => {
-        this.setState({ [e.target.name]: e.target.value });
-
-        e.target.value === "" || e.target.value.length > 100 ?
-            this.setState({ disabledBtn: true }) : this.setState({ disabledBtn: false });
+        e.persist();
+        const { name, value } = e.target;
+        this.setState(() => {
+            return { [name]: value }
+        }, () => {
+            e.target.value === "" || e.target.value.length > 100 ?
+                this.setState({ disabledBtn: true }) : this.setState({ disabledBtn: false });
+        });
     }
 
     editHandler = (e) => {
@@ -35,7 +39,10 @@ class EditComment extends Component {
                     changeFn={this.chanegeHandler}
                     val={this.state.content}
                 />
-                <button onClick={this.editHandler} disabled={this.state.disabledBtn} className="btn btn-success">
+                <button 
+                    onClick={this.editHandler} 
+                    disabled={this.state.disabledBtn} 
+                    className="btn btn-success">
                     Save
                 </button>
 

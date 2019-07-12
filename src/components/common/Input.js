@@ -1,23 +1,23 @@
-import React from 'react'
+import React from 'react';
 
 
-const Input = (props)=>{
+const Input = (props) => {
 
-    return(
+    return (
         <div className="form-group">
-            <label 
+            <label
                 htmlFor={props.name}>{props.label}</label>
-                <input 
-                    onChange={props.changeFn}
-                    value={props.val || ''}
-                    type={props.type} 
-                    className="form-control" 
-                    name={props.name} 
-                    id={props.name} 
-                    placeholder={props.label}/>
+            <input
+                onChange={props.changeFn}
+                value={props.val || ''}
+                type={props.type}
+                className="form-control"
+                name={props.name}
+                id={props.name}
+                placeholder={props.label} />
         </div>
     )
 
 }
 
-export default Input
+export default Input;
